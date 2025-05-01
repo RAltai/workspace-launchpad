@@ -1,0 +1,101 @@
+
+body {
+  font-family: sans-serif;
+  background: #121212;
+  color: #e0e0e0;
+  padding: 20px;
+}
+h1 {
+  text-align: center;
+}
+.category {
+  margin-bottom: 40px;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.card {
+  background: #1f1f1f;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 10px;
+  width: 200px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+.card img {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+}
+.card input {
+  margin: 5px 0;
+  width: 100%;
+}
+.card .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card .title {
+  display: flex;
+  align-items: center;
+}
+button {
+  margin-top: 10px;
+  background: #333;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background: #444;
+}
+
+.card iframe {
+  width: 100%;
+  height: 150px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+.card .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card button {
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.card .thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.card .title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: white;
+}
+.card .title:hover {
+  text-decoration: underline;
+}
+.card img {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}
