@@ -2,3 +2,4 @@ data.yaml
 favicons/*
 thumbnails/*
 .DS_STORE
+*.log
