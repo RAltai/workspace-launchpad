@@ -18,7 +18,7 @@ Path(THUMBNAIL_DIR).mkdir(exist_ok=True)
 
 def load_data():
     if not os.path.exists(DATA_FILE):
-        return { 'Dashboards': [], 'Docs': [], 'Tools': [] }
+        return {'Chats': [], 'Dashboards': [], 'Docs': [], 'Tools': [] }
     with open(DATA_FILE, 'r') as f:
         return yaml.safe_load(f) or {}
 
@@ -92,8 +92,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             entry = {
                 "title": data.get("title", ""),
                 "url": data.get("url", ""),
-                "favicon": data.get("favicon", "/default.ico"),
-                "thumbnail": data.get("thumbnail", "/default.png")
+                "favicon": data.get("favicon", "/default.ico")
             }
             db[data["category"]].append(entry)
             save_data(db)

@@ -1,5 +1,5 @@
 
-const CATEGORIES = ['Dashboards', 'Docs', 'Tools'];
+const CATEGORIES = ['Chats', 'Dashboards', 'Docs', 'Tools'];
 
 function loadLinks(filter = "") {
   fetch('/data.yaml')
