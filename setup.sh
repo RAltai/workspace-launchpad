@@ -1,23 +1,23 @@
 #!/bin/bash
 
-echo "🔧 Setting up local dashboard..."
+echo "🔧 Setting up Local Dashboard (Global Python Mode)"
 
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate
+# Step 1: Install dependencies globally
+echo "📦 Installing Python packages globally..."
+pip3 install --upgrade pip --break-system-packages
+pip3 install playwright pyyaml --break-system-packages
 
-# Install Python dependencies
-pip install -r requirements.txt
+# Step 2: Install Playwright browsers
+echo "🧭 Installing Playwright browser support..."
 playwright install
 
-# Install New Tab Redirect if Chrome is open
-echo "⚠️ Please make sure you have the Chrome extension 'New Tab Redirect' installed."
-echo "➡️ Set your new tab page to: http://localhost:8888"
+# Step 3: Create LaunchAgent for macOS auto-start
+PLIST_PATH="$HOME/Library/LaunchAgents/local.dashboard.plist"
+PROJECT_DIR="$(cd "$(dirname "$0")"; pwd)"
 
-# Setup login item (macOS only)
-LOGIN_SCRIPT="$HOME/Library/LaunchAgents/local.dashboard.plist"
+echo "📄 Writing LaunchAgent to $PLIST_PATH"
 
-cat <<EOF > "$LOGIN_SCRIPT"
+cat <<EOF > "$PLIST_PATH"
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
   "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -27,21 +27,28 @@ cat <<EOF > "$LOGIN_SCRIPT"
   <string>local.dashboard</string>
   <key>ProgramArguments</key>
   <array>
-    <string>${PWD}/venv/bin/python3</string>
-    <string>${PWD}/server.py</string>
+    <string>/usr/bin/python3</string>
+    <string>$PROJECT_DIR/server.py</string>
   </array>
   <key>RunAtLoad</key>
   <true/>
   <key>WorkingDirectory</key>
-  <string>${PWD}</string>
+  <string>$PROJECT_DIR</string>
   <key>StandardOutPath</key>
-  <string>${PWD}/out.log</string>
+  <string>$PROJECT_DIR/out.log</string>
   <key>StandardErrorPath</key>
-  <string>${PWD}/err.log</string>
+  <string>$PROJECT_DIR/err.log</string>
 </dict>
 </plist>
 EOF
 
-launchctl load "$LOGIN_SCRIPT"
+chmod 644 "$PLIST_PATH"
 
-echo "✅ Setup complete. The dashboard will auto-start on login."
+# Step 4: Load the LaunchAgent
+echo "🚀 Loading LaunchAgent..."
+launchctl unload "$PLIST_PATH" 2>/dev/null
+launchctl load "$PLIST_PATH"
+
+echo "✅ Setup complete!"
+echo "➡️ Dashboard will run on login and be available at: http://localhost:8888"
+echo "🧭 Don't forget to set Chrome's new tab to: http://localhost:8888 (via New Tab Redirect extension)"
