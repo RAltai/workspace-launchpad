@@ -1,5 +1,7 @@
-data.yaml
-favicons/*
-thumbnails/*
-.DS_STORE
-*.log
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.Python?
