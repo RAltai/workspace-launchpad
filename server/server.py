@@ -43,7 +43,7 @@ def ensure_favicon(url):
 
 # ---------- routes --------------------------------------------------
 @app.route("/")
-def index():                       # served page is identical for both modes
+def index():
     return render_template("index.html")
 
 @app.route("/data/<mode>.yaml")

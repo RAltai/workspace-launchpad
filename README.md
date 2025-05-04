@@ -18,3 +18,48 @@ python -m venv venv && source venv/bin/activate  # Windows: venv\Scripts\activat
 pip install -r requirements.txt
 python -m playwright install chromium
 python server/server.py
+````
+
+Open [http://localhost:8888](http://localhost:8888).
+
+Run `setup/setup.sh` (macOS/Linux) or `setup/setup.bat` (Windows) for automatic venv creation, dependency install, login‑start integration, and guided browser configuration.
+
+See full usage, customisation, and troubleshooting at the end of this file.
+
+````
+
+*(Add any extra instructions you need.)*
+
+---
+
+## 4. Directory `data/` – YAML files
+
+### `data/work.yaml`
+
+```yaml
+Dashboards:
+  - title: GitHub
+    url: https://github.com
+    favicon: /assets/favicons/github.com.ico
+Tools:
+  - title: Jenkins
+    url: https://jenkins.io
+    favicon: /assets/favicons/jenkins.io.ico
+````
+
+### `data/personal.yaml`
+
+```yaml
+Media:
+  - title: YouTube
+    url: https://youtube.com
+    favicon: /assets/favicons/youtube.com.ico
+Shopping:
+  - title: Amazon
+    url: https://amazon.com
+    favicon: /assets/favicons/amazon.com.ico
+```
+
+*(Feel free to edit or add categories/links — every top‑level key is a category.)*
+
+---
