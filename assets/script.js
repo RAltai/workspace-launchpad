@@ -45,7 +45,7 @@ function cardElem(category, link) {
     if (e.target.classList.contains("menu")) {
       e.stopPropagation();
       openModal("edit", { category, link });
-    } else window.open(link.url, "_blank");
+    } else window.location.href = link.url;
   };
   return div;
 }
