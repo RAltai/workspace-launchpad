@@ -63,3 +63,10 @@ Shopping:
 *(Feel free to edit or add categories/links — every top‑level key is a category.)*
 
 ---
+
+### `Docker setup`
+
+```
+docker build -t workspace-page .
+docker run -d -p 80:8888 workspace-page
+```
