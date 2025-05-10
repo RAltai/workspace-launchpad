@@ -64,7 +64,7 @@ Shopping:
 
 ---
 
-### `Docker setup`
+## Docker setup
 
 ```
 docker build -t workspace-page .
