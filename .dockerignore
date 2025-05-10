@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+venv/
+tests/
+README.md
+requirements-dev.txt
+.DS_Store
